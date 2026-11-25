@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>李想 · 个人简历</title>
+<style>
+/* SECTION: base */
+:root{
+  --ink:#1a1d21;
+  --ink-2:#4b5560;
+  --ink-3:#7b8592;
+  --line:#e3e7ec;
+  --brand:#1f3a5f;
+  --brand-soft:#eef2f7;
+  --todo:#a8710f;
+  --todo-bg:#fff8ec;
+  --todo-line:#e8cfa0;
+  --paper:#ffffff;
+  --bg:#f2f4f7;
+}
+*{box-sizing:border-box;}
+html,body{margin:0;padding:0;}
+body{
+  background:var(--bg);
+  color:var(--ink);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Microsoft YaHei","PingFang SC","Hiragino Sans GB",Arial,sans-serif;
+  font-size:15px;
+  line-height:1.66;
+  -webkit-font-smoothing:antialiased;
+}
+.page{
+  max-width:880px;
+  margin:24px auto;
+  background:var(--paper);
+  border:1px solid var(--line);
+  border-radius:6px;
+  overflow:hidden;
+}
+
+/* SECTION: toolbar */
+.toolbar{
+  max-width:880px;
+  margin:0 auto 14px;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  align-items:center;
+}
+.btn{
+  font:inherit;
+  font-size:14px;
+  padding:9px 18px;
+  border-radius:5px;
+  border:1px solid var(--brand);
+  background:var(--brand);
+  color:#fff;
+  cursor:pointer;
+  min-height:44px;
+}
+.btn.ghost{background:#fff;color:var(--brand);}
+.hint{font-size:13px;color:var(--ink-3);}
+
+/* SECTION: header */
+.head{
+  padding:38px 44px 26px;
+  border-bottom:3px solid var(--brand);
+}
+.head-top{
+  display:flex;
+  flex-wrap:wrap;
+  gap:26px;
+  align-items:flex-start;
+  justify-content:space-between;
+}
+.name{
+  margin:0;
+  font-size:34px;
+  letter-spacing:6px;
+  font-weight:700;
+  color:var(--brand);
+}
+.role{
+  margin:8px 0 0;
+  font-size:16px;
+  color:var(--ink-2);
+  letter-spacing:1px;
+}
+.tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+.tag{
+  font-size:12.5px;
+  padding:4px 11px;
+  border-radius:3px;
+  background:var(--brand-soft);
+  color:var(--brand);
+  letter-spacing:.5px;
+}
+.avatar{
+  width:88px;
+  height:112px;
+  border:1px dashed var(--line);
+  border-radius:4px;
+  background:#fafbfc;
+  color:var(--ink-3);
+  font-size:12px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  flex:0 0 auto;
+}
+.contact{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px 26px;
+  margin-top:20px;
+  font-size:14px;
+  color:var(--ink-2);
+}
+.contact span{white-space:nowrap;}
+.contact b{color:var(--ink-3);font-weight:600;margin-right:6px;}
+
+/* SECTION: body */
+.body{padding:10px 44px 40px;}
+.sec{padding-top:26px;}
+.sec + .sec{border-top:1px solid var(--line);margin-top:26px;}
+.sec-title{
+  display:flex;
+  align-items:center;
+  gap:9px;
+  margin:0 0 16px;
+  font-size:16.5px;
+  font-weight:700;
+  letter-spacing:2.5px;
+  color:var(--brand);
+}
+.sec-title::before{
+  content:"";
+  width:4px;
+  height:16px;
+  background:var(--brand);
+  border-radius:2px;
+}
+
+.item + .item{margin-top:18px;}
+.item-head{display:flex;flex-wrap:wrap;gap:4px 16px;align-items:baseline;}
+.item-head h3{margin:0;font-size:15.5px;font-weight:700;}
+.item-head .sub{font-size:14px;color:var(--ink-2);}
+.item-head .time{margin-left:auto;font-size:13px;color:var(--ink-3);white-space:nowrap;}
+.item ul{margin:9px 0 0;padding-left:19px;}
+.item li{margin:4px 0;color:var(--ink-2);}
+.item li::marker{color:var(--brand);}
+.item li strong{color:var(--ink);font-weight:600;}
+
+.course{margin-top:10px;font-size:14px;color:var(--ink-2);}
+.course b{color:var(--ink-3);font-weight:600;}
+
+/* SECTION: skills */
+.skills{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+  gap:14px 26px;
+}
+.skill{min-width:0;}
+.skill h4{margin:0 0 6px;font-size:14.5px;font-weight:600;color:var(--ink);}
+.skill p{margin:0;font-size:14px;color:var(--ink-2);}
+.bar{height:6px;margin-top:7px;background:var(--brand-soft);border-radius:3px;overflow:hidden;}
+.bar i{display:block;height:100%;width:0;background:var(--brand);border-radius:3px;transition:width .7s ease;}
+
+/* SECTION: todo */
+.todo{
+  display:inline-block;
+  color:var(--todo);
+  background:var(--todo-bg);
+  border:1px dashed var(--todo-line);
+  border-radius:3px;
+  padding:0 6px;
+  font-size:13px;
+}
+.note{margin-top:6px;font-size:13px;color:var(--ink-3);}
+.self-text{margin:0;font-size:14.5px;color:var(--ink-2);}
+
+.foot{
+  padding:16px 44px 22px;
+  border-top:1px solid var(--line);
+  font-size:12.5px;
+  color:var(--ink-3);
+  background:#fbfcfd;
+}
+
+/* SECTION: responsive */
+@media (max-width:640px){
+  body{font-size:15px;}
+  .page{margin:0;border-left:none;border-right:none;border-radius:0;}
+  .toolbar{padding:0 16px;}
+  .head{padding:26px 20px 20px;}
+  .body{padding:6px 20px 30px;}
+  .foot{padding:14px 20px 18px;}
+  .name{font-size:28px;letter-spacing:4px;}
+  .item-head .time{margin-left:0;width:100%;}
+  .avatar{width:74px;height:96px;}
+}
+
+/* SECTION: print */
+@media print{
+  body{background:#fff;font-size:11.6pt;line-height:1.5;}
+  .toolbar{display:none;}
+  .page{max-width:none;margin:0;border:none;border-radius:0;}
+  .head{padding:0 0 14px;}
+  .body{padding:0;}
+  .foot{display:none;}
+  .sec{padding-top:14px;break-inside:avoid;}
+  .item{break-inside:avoid;}
+}
+</style>
+</head>
+<body>
+
+<!-- SECTION: toolbar -->
+<div class="toolbar">
+  <button class="btn" id="printBtn" type="button">导出 / 打印为 PDF</button>
+  <button class="btn ghost" id="copyBtn" type="button">复制纯文本版</button>
+  <span class="hint" id="tip">黄色虚线框为需你本人信息补充的位置</span>
+</div>
+
+<main class="page">
+
+  <!-- SECTION: header -->
+  <header class="head">
+    <div class="head-top">
+      <div>
+        <h1 class="name">李　想</h1>
+        <p class="role">教育技术学专业 · 2026 级本科</p>
+        <div class="tags">
+          <span class="tag">教学设计</span>
+          <span class="tag">数字媒体制作</span>
+          <span class="tag">团队协作</span>
+          <span class="tag"><span class="todo">求职意向待填</span></span>
+        </div>
+      </div>
+      <div class="avatar">证件照<br>（待替换）</div>
+    </div>
+    <div class="contact">
+      <span><b>学号</b>202625004049</span>
+      <span><b>学校</b>江西师范大学</span>
+      <span><b>手机</b><span class="todo">待填写</span></span>
+      <span><b>邮箱</b>lx13237911273@163.com</span>
+      <span><b>所在地</b>江西 南昌</span>
+    </div>
+  </header>
+
+  <div class="body">
+
+    <!-- SECTION: education -->
+    <section class="sec">
+      <h2 class="sec-title">教育背景</h2>
+      <div class="item">
+        <div class="item-head">
+          <h3>江西师范大学</h3>
+          <span class="sub">教育技术学 · 本科</span>
+          <span class="time">2026.09 — <span class="todo">预计毕业年份</span></span>
+        </div>
+        <p class="course"><b>主修课程：</b>教育学原理、教学系统设计、教育技术学导论、C 语言程序设计、数据结构、教育传播学、数字图像处理、在线课程设计与开发、人工智能教育应用<span class="todo">（按实际选课增删）</span></p>
+        <p class="course"><b>学业情况：</b><span class="todo">GPA / 专业排名 / 所获奖学金，可补充；大一阶段无排名也可删除本行</span></p>
+      </div>
+    </section>
+
+    <!-- SECTION: experience -->
+    <section class="sec">
+      <h2 class="sec-title">实践与项目经历</h2>
+
+      <div class="item">
+        <div class="item-head">
+          <h3><span class="todo">课程设计：微课 / 教学课件制作</span></h3>
+          <span class="sub">组长（个人任务则填「独立完成」）</span>
+          <span class="time"><span class="todo">2026.__ — 2026.__</span></span>
+        </div>
+        <ul>
+          <li><strong>任务：</strong>围绕一个知识点完成教学设计，产出教案、课件与短视频。</li>
+          <li><strong>过程：</strong>完成学情分析与目标撰写，设计教学流程并制作配套多媒体素材。</li>
+          <li><strong>成果：</strong><span class="todo">补充课程名称、作品时长与成绩 / 教师评价</span></li>
+        </ul>
+      </div>
+
+      <div class="item">
+        <div class="item-head">
+          <h3><span class="todo">校园实践 / 志愿活动</span></h3>
+          <span class="sub"><span class="todo">角色 · 组织名称</span></span>
+          <span class="time"><span class="todo">起止时间</span></span>
+        </div>
+        <ul>
+          <li><span class="todo">按「做了什么 + 怎么做 + 结果」写 2—3 条，尽量带上人数、时长等数字</span></li>
+          <li><span class="todo">没有这一段经历时，可整块删除</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: skills -->
+    <section class="sec">
+      <h2 class="sec-title">专业技能</h2>
+      <div class="skills">
+        <div class="skill">
+          <h4>教学设计与资源开发</h4>
+          <p>能完成教学目标撰写、流程设计与教案编写，制作结构化课件与微课脚本。</p>
+          <div class="bar"><i data-level="0.7"></i></div>
+        </div>
+        <div class="skill">
+          <h4>办公与文档</h4>
+          <p>Word 长文档排版、Excel 数据整理与图表、PPT 汇报制作。</p>
+          <div class="bar"><i data-level="0.7"></i></div>
+        </div>
+        <div class="skill">
+          <h4>图形与影音处理</h4>
+          <p>剪映 / Premiere 视频剪辑，Photoshop 图片处理，基础录音与字幕制作。</p>
+          <div class="bar"><i data-level="0.6"></i></div>
+        </div>
+        <div class="skill">
+          <h4>程序与网页基础</h4>
+          <p>C 语言 / Python 基础语法，HTML + CSS 静态页面搭建。</p>
+          <div class="bar"><i data-level="0.5"></i></div>
+        </div>
+        <div class="skill">
+          <h4>外语与证书</h4>
+          <p><span class="todo">CET-4/6、普通话等级、教师资格证、计算机等级等，按实际填写</span></p>
+          <div class="bar"><i data-level="0.55"></i></div>
+        </div>
+        <div class="skill">
+          <h4>沟通与协作</h4>
+          <p>适应小组协作与任务分工，能承担组织协调、进度跟进与对接沟通工作。</p>
+          <div class="bar"><i data-level="0.75"></i></div>
+        </div>
+      </div>
+      <p class="note">技能描述按教育技术学专业常见培养方向写，与你不符的直接告诉我改哪条。</p>
+    </section>
+
+    <!-- SECTION: honors -->
+    <section class="sec">
+      <h2 class="sec-title">荣誉与奖励</h2>
+      <div class="item">
+        <ul>
+          <li><span class="todo">奖项 / 荣誉名称 · 颁发单位 · 年份</span></li>
+          <li><span class="todo">如竞赛、奖学金、优秀学生干部等逐条列出；暂无可整节删除</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- SECTION: self -->
+    <section class="sec">
+      <h2 class="sec-title">自我评价</h2>
+      <p class="self-text">教育技术学专业在读，方向是信息技术与教学的结合。学习中习惯把任务拆成明确步骤再推进，课件制作与影音处理动手较多，能独立完成从素材准备到成品的交付。表达与协作比较主动，愿意承担对接和统筹的角色。<span class="todo">（草稿，可告诉我目标岗位，我按岗位改写）</span></p>
+    </section>
+
+  </div>
+
+  <footer class="foot">
+    本页为个人简历网页版，可直接在浏览器打开；点击「导出 / 打印为 PDF」即可保存为 A4 文件投递。
+  </footer>
+
+</main>
+
+<script>
+/* SECTION: interactions */
+(function () {
+  'use strict';
+
+  // 技能条宽度：动态值在 DOM 就绪后以属性方式注入，不做字符串拼接
+  var bars = document.querySelectorAll('.bar i');
+  var i, lv;
+  for (i = 0; i < bars.length; i++) {
+    lv = parseFloat(bars[i].getAttribute('data-level'));
+    if (isNaN(lv)) { lv = 0; }
+    if (lv < 0) { lv = 0; }
+    if (lv > 1) { lv = 1; }
+    bars[i].style.width = (lv * 100).toFixed(0) + '%';
+  }
+
+  var tip = document.getElementById('tip');
+  function setTip(text) { if (tip) { tip.textContent = text; } }
+
+  var printBtn = document.getElementById('printBtn');
+  if (printBtn) {
+    printBtn.addEventListener('click', function () { window.print(); });
+  }
+
+  // 复制纯文本版：直接读取页面节点文本，不维护第二份文案
+  var copyBtn = document.getElementById('copyBtn');
+  if (copyBtn) {
+    copyBtn.addEventListener('click', function () {
+      var lines = [];
+      lines.push('李想　江西师范大学　教育技术学专业　2026 级本科');
+      lines.push('学号：202625004049　邮箱：lx13237911273@163.com　所在地：江西 南昌');
+      lines.push('');
+
+      var secs = document.querySelectorAll('.sec');
+      var s, title, nodes, k, node, txt;
+      for (s = 0; s < secs.length; s++) {
+        title = secs[s].querySelector('.sec-title');
+        nodes = secs[s].querySelectorAll('h3, .sub, .time, li, .course, .skill h4, .skill p, .self-text');
+        lines.push('【' + (title ? title.textContent.trim() : '') + '】');
+        for (k = 0; k < nodes.length; k++) {
+          node = nodes[k];
+          txt = node.textContent.replace(/\s+/g, ' ').trim();
+          if (txt) { lines.push(txt); }
+        }
+        lines.push('');
+      }
+
+      var out = lines.join('\n');
+
+      function fallback() {
+        var ta = document.createElement('textarea');
+        ta.value = out;
+        ta.setAttribute('readonly', 'readonly');
+        ta.style.position = 'fixed';
+        ta.style.left = '-9999px';
+        document.body.appendChild(ta);
+        ta.select();
+        var ok = false;
+        try { ok = document.execCommand('copy'); } catch (e) { ok = false; }
+        document.body.removeChild(ta);
+        setTip(ok ? '纯文本已复制，可直接粘贴到 Word 或邮件正文' : '当前浏览器不支持自动复制，请手动选中页面文字');
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(out).then(function () {
+          setTip('纯文本已复制，可直接粘贴到 Word 或邮件正文');
+        }, fallback);
+      } else {
+        fallback();
+      }
+    });
+  }
+})();
+</script>
+
+</body>
+</html>
